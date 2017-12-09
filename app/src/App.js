@@ -15,8 +15,9 @@ import SiteNav from './components/SiteNav';
 import HomePage from './pages/HomePage';
 import MyPollsPage from './pages/MyPollsPage';
 import ProfilePage from './pages/ProfilePage';
+import LoginPage from './pages/LoginPage';
 
-function App() {
+function App({ loggedIn }) {
   return (
     <div className="App">
       <SiteHeader />
@@ -25,13 +26,23 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/mypolls" component={MyPollsPage} />
         <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/login" component={LoginPage} />
       </Switch>
 
-      <div className="c-site-nav" >
-        <SiteNav />
-      </div>
+      {
+        loggedIn ? (
+          <div className="c-site-nav" >
+            <SiteNav />
+          </div>
+        ) : null
+
+      }
     </div>
   );
 }
 
-export default withRouter(App);
+const mapStateToProps = state => ({
+  loggedIn: state.user.Authorized
+})
+
+export default withRouter(connect(mapStateToProps, null)(App));

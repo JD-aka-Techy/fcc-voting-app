@@ -20,19 +20,20 @@ class HomePage extends Component {
     const { polls } = this.props;
     return (
       <div>
-        Home page
+
         <div className="c-card-grid">
 
           {polls.map(poll => <ChartCard { ...poll } />)}
 
         </div>
+
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  polls: state.polls
+  polls: state.polls.allPolls
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

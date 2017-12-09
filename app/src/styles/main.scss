@@ -17,5 +17,13 @@ body {
 }
 
 .c-card-grid {
-    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 3rem;
+}
+
+.c-chart__container {
+    width: 60%;
+    margin: 0 auto;
 }
